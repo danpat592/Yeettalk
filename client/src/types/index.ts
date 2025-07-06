@@ -1,10 +1,63 @@
-// Re-export shared types for client use
-export * from '../../../shared';
+// User types
+export interface User {
+  _id: string;
+  username: string;
+  email: string;
+  avatar?: string;
+  isOnline: boolean;
+  lastSeen: Date;
+  rooms: string[];
+  createdAt: Date;
+  updatedAt: Date;
+}
 
-// Import types for local use
-import type { User } from '../../../shared';
-import type { Room } from '../../../shared';
-import type { Message } from '../../../shared';
+// Room types
+export interface Room {
+  _id: string;
+  name: string;
+  description?: string;
+  type: 'public' | 'private';
+  ownerId: string;
+  members: string[];
+  maxMembers: number;
+  isActive: boolean;
+  settings: RoomSettings;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface RoomSettings {
+  allowVoiceChat: boolean;
+  allowScreenShare: boolean;
+  allowMusicShare: boolean;
+  allowFileShare: boolean;
+  moderationEnabled: boolean;
+}
+
+// Message types
+export interface Message {
+  _id: string;
+  roomId: string;
+  userId: string;
+  username: string;
+  content: string;
+  type: 'text' | 'image' | 'file' | 'audio' | 'video' | 'system';
+  replyTo?: string;
+  reactions: MessageReaction[];
+  edited: boolean;
+  editedAt?: Date;
+  fileUrl?: string;
+  fileName?: string;
+  fileSize?: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface MessageReaction {
+  userId: string;
+  emoji: string;
+  createdAt: Date;
+}
 
 // Client-specific types
 export interface ApiResponse<T> {

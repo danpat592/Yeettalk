@@ -1,5 +1,5 @@
 import { io, Socket } from 'socket.io-client';
-import { SOCKET_EVENTS } from '../../../shared';
+import { SOCKET_EVENTS } from '../utils/constants';
 
 class SocketService {
   private socket: Socket | null = null;

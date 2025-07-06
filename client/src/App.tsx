@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useAuthStore } from './store/authStore';
 import { useRoomStore } from './store/roomStore';
 import { socketService } from './services/socket';
-import { SOCKET_EVENTS } from '../../shared';
+import { SOCKET_EVENTS } from './utils/constants';
 
 // Pages
 import Home from './pages/Home';
